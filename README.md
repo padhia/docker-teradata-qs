@@ -1,16 +1,22 @@
 # docker-tdrest
-Dockerized Teradata REST Framework
+Dockerized Teradata REST package
 
-Before building the docker image, download the software from Teradata website,
-unzip and then place the RPM in the same directory as this Dockerfile.
+Notes:
 
-Command to building the docker image:
+* Before building the docker image, you should have obtained/downloaded
+  Teradata REST Services software. Extract the RPM package and place it in the
+  same directory as the Dockerfile.
+
+* The default init system for `centos7` is `systemd`. Teradata REST rpm creates
+  and attempts to start traditional `/etc/init.d/tdrestd` resulting in error
+  messages to be shown during rpm installation. Since `CMD` specification
+  within the `Dockerfile` explicitly starts the tomcat server, it is safe to
+  ignore these errors.
+
+Building the docker image:
 
 `docker build -t tdrest .`
 
-It is safe to ignore warnings and errors during the building.
-
-
-Command to run the resulting image:
+Running the resulting image:
 
 `docker run -i -p 1080:1080 -t tdrest`

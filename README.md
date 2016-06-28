@@ -1,4 +1,4 @@
-# docker-tdrest
+# docker-teradata-rest
 Dockerized Teradata REST package
 
 Notes:

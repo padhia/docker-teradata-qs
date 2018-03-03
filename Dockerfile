@@ -1,16 +1,15 @@
 FROM centos:centos7
 
-ADD tdrestd*rpm /tmp
+COPY query-service-*.rpm /tmp
 
 RUN yum -y install java-headless && \
     yum clean all && \
-	rpm -ivh /tmp/tdrestd*rpm && \
-	rm /tmp/tdrestd*rpm
+	rpm -ivh /tmp/query-service-*.rpm && \
+	rm /tmp/query-service-*.rpm
 
 EXPOSE 1080
+EXPOSE 1443
 
 USER tdrest
-ENV CATALINA_HOME=/opt/teradata/rest/daemon CATALINA_PID="/var/opt/teradata/rest/daemon/tdrestd.pid"
-WORKDIR /opt/teradata/rest/daemon/bin
 
-CMD /bin/bash -c "exec /opt/teradata/rest/daemon/bin/catalina.sh run"
+CMD /opt/teradata/rest/bin/run.sh tdrest

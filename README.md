@@ -1,22 +1,18 @@
 # docker-teradata-rest
-Dockerized Teradata REST package
+Dockerized Teradata Query Services
 
 Notes:
 
 * Before building the docker image, you should have obtained/downloaded
-  Teradata REST Services software. Extract the RPM package and place it in the
+  Teradata Query Services software. Extract the RPM package and place it in the
   same directory as the Dockerfile.
 
-* The default init system for `centos7` is `systemd`. Teradata REST rpm creates
-  and attempts to start traditional `/etc/init.d/tdrestd` resulting in error
-  messages to be shown during rpm installation. Since `CMD` specification
-  within the `Dockerfile` explicitly starts the tomcat server, it is safe to
-  ignore these errors.
+* This product was formerly known as Teradata REST Services
 
 Building the docker image:
 
-`docker build -t tdrest .`
+`docker build -t tdqs .`
 
 Running the resulting image:
 
-`docker run -i -p 1080:1080 -t tdrest`
+`docker run -i -p 1080:1080 -p 1443:1443 -t tdqs`

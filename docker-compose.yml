@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  tdqs:
+    image: tdqs
+    container_name: tdqs
+    build: ./
+    ports:
+      - "1080:1080"
+      - "1443:1443"

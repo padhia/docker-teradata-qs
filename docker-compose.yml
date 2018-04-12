@@ -5,6 +5,11 @@ services:
     image: tdqs
     container_name: tdqs
     build: ./
+    volumes:
+      - tdqs-config:/etc/opt/teradata/rest/config
     ports:
       - "1080:1080"
       - "1443:1443"
+
+volumes:
+  tdqs-config:
